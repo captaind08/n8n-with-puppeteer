@@ -1,0 +1,16 @@
+{
+    "name": "n8n-with-puppeteer",
+    "version": "1.0.0",
+    "description": "n8n with Puppeteer for web scraping and automation",
+    "main": "index.js",
+    "dependencies": {
+      "puppeteer": "^19.0.0",
+      "n8n": "^1.0.0"
+    },
+    "scripts": {
+      "start": "n8n"
+    },
+    "author": "Your Name",
+    "license": "MIT"
+  }
+  
