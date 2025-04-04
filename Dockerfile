@@ -1,16 +1,7 @@
 # Base image
-FROM node:18
+FROM n8nio/n8n:latest
 
-# Create and set working directory
-WORKDIR /usr/src/app
-
-# Install n8n
-RUN npm install -g n8n
-
-# Install Puppeteer (if you prefer Playwright, replace this line with `RUN npm install playwright`)
-RUN npm install puppeteer
-
-# Install dependencies required by Puppeteer
+# Install necessary dependencies for Puppeteer
 RUN apt-get update && apt-get install -y \
     gconf-service \
     libasound2 \
@@ -26,10 +17,19 @@ RUN apt-get update && apt-get install -y \
     xdg-utils \
     wget \
     libgbm-dev \
-    libxshmfence-dev
+    libxshmfence-dev \
+    fonts-liberation \
+    libappindicator3-1 \
+    libatk-bridge2.0-0 \
+    libpangocairo-1.0-0 \
+    libpango-1.0-0 \
+    libatk1.0-0
 
-# Expose port
+# Install Puppeteer with Chromium
+RUN npm install puppeteer@latest --unsafe-perm=true
+
+# Expose the n8n port
 EXPOSE 5678
 
-# Set the command to run n8n
+# Set the command to start n8n
 CMD ["n8n"]
