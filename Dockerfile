@@ -1,5 +1,5 @@
-# Base image
-FROM n8nio/n8n:latest
+# Use Debian-based Node.js image
+FROM n8nio/n8n:latest-debian
 
 # Install necessary dependencies for Puppeteer
 RUN apt-get update && apt-get install -y \
